@@ -1,0 +1,35 @@
+
+Registrar:
+
+Modelos de propiedad horizonte
+- Propiedad horizonte
+- Reglamento
+- Inmueble
+- Areas comunes
+- parqueadero
+- persona
+- mascota
+- vehiculo
+
+
+Admin de propiedad horizonte
+- proveedores
+- facturas
+- buzon de sugerencias
+- estado de cuenta
+
+
+Admin de areas comunes
+- prestamos
+- Dan~os
+- Mantenimiento
+
+Eventos
+- Evento
+- Asamblea
+- concejo admin
+- presupuesto anual
+
+Inmueble y parqueadero
+- Factura cobro de administracion
+- Asignacion parqueadero
