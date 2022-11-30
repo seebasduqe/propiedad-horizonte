@@ -1,8 +1,8 @@
-Esta es la app de propiedad horizonte para interactuar con la base de datos propiedad horizonte
+Esta es la app de propiedad horizonte para interactuar con la base de datos propiedad horizonte, esta hecha con el lenguaje typescript y el framework Nextjs, que utiliza de fondo la libreria react para la capa front y estilado tailwind css, y tiene su propia api que sirve de backend. Los datos son guardados en una base de datos postgres
 
 ## Que hace la app
 Lista tablas agrupadas cargadas de informacion bajo un mismo contexto,
-las cuales se puede manipular como crear, editar, y borrar informacion de esas tablas
+las cuales se puede manipular como crear, editar, y borrar informacion de esas tablas, los datos provienen de una base de datos a una api del backend, el backend envia por http al front a un administrador de estado REDUX QUERY el cual se encarga de dirigir los datos a los distintos componentes del front, y se encarga de las funciones que ejecutan los metodos http.
 
 
 ## Como se distribuye la app
