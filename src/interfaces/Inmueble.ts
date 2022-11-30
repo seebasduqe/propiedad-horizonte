@@ -6,3 +6,7 @@ export interface Inmueble {
     propiedad_horizonte : string;
     propietario : string;
 };
+
+export interface Inmuebles {
+    inmuebles : Inmueble[];
+}

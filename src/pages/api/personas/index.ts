@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 const {cedula,nombre,no_celular} = body;
                 const persona = [cedula, nombre, no_celular];
                 const response = await conn.query(query, persona);
-                return res.status(200).json(response.rows);
+                return res.status(200).json(response.rows[0]);
 
             } catch (error: any){
                 return res.status(400).json({message: error.message});

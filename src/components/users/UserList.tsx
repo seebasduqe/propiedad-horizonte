@@ -3,27 +3,25 @@ import {RiDeleteBin5Fill} from 'react-icons/ri';
 import {AiOutlineEdit} from 'react-icons/ai';
 import {useRouter} from "next/router";
 import {useState} from "react";
+import {Personas} from "../../interfaces/Persona";
+import {useBorrarPersonaMutation, useGetPersonasQuery} from "../../pages/redux/features/users/personaApiSlice";
 
-interface Props {
-    personas: Persona[];
-}
 
-export const UserList = ({personas = []} : Props) => {
+export const UserList = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [idState, setIdState] = useState<string>(" ");
 
+    const [borrarPersona] = useBorrarPersonaMutation();
+
     const {push} = useRouter();
+
+    const {data, error, isLoading } = useGetPersonasQuery();
+    const personas : Persona[] | any = data;
 
     const handleDelete = async () => {
         setShowModal(false);
-        try{
-            const res = await fetch('http://localhost:3000/api/personas/'+idState, {method : "DELETE"});
-            const personaBorrada = await res.json();
-            await push('/');
-        } catch (error:any) {
-            console.log(error.message);
-        }
+        borrarPersona(idState);
     }
 
     return(
@@ -86,9 +84,8 @@ export const UserList = ({personas = []} : Props) => {
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">celular</th>
                     </tr>
                     </thead>
-
                     <tbody>
-                        {Object.keys(personas).map((key: any) =>
+                        {personas && Object.keys(personas).map((key : string) =>
                             <tr key={personas[key].cedula}>
                                 <td>{personas[key].cedula}</td>
                                 <td>{personas[key].nombre}</td>
@@ -96,7 +93,7 @@ export const UserList = ({personas = []} : Props) => {
                                 <td>
                                     <button
                                         className="bg-indigo-500 px-4 py-2 text-white rounded-lg"
-                                        onClick={ () => push(`/personas/edit/${personas[key].cedula}`)}
+                                        onClick={ () => push(`/users/edit/${personas[key].cedula}`)}
                                     >
                                         <AiOutlineEdit></AiOutlineEdit>
                                     </button>

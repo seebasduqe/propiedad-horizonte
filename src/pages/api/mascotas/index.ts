@@ -1,10 +1,19 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import {conn} from "../../../utils/database";
+import {getAllMascotasService, salvarMascotaService} from "./service/service";
+import {Propiedad_horizonte} from "../../../interfaces/propiedad_horizonte";
+
+interface Propiedades_horizonte {
+    propiedades_horizonte : Propiedad_horizonte[]
+}
 
 export default async (req : NextApiRequest, res : NextApiResponse) => {
-
-    const query = "select * from mascotas";
-    const response = await conn.query(query);
-    return res.status(200).json(response.rows);
-
-};
+    const {method} = req;
+    switch (method) {
+        case "GET":
+            return getAllMascotasService(req,res);
+        case "POST":
+          return salvarMascotaService(req,res);
+        default:
+            return res.status(200).json("metodo invalido");
+    }
+}

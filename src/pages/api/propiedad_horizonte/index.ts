@@ -1,6 +1,7 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {conn} from "../../../utils/database";
-
+import {getAllPropiedadHorizonte} from "./service/service";
+import {Propiedades_horizonte} from "../../../interfaces/propiedad_horizonte";
 
 export default async (req : NextApiRequest, res : NextApiResponse) => {
 
@@ -9,9 +10,8 @@ export default async (req : NextApiRequest, res : NextApiResponse) => {
     switch (method){
         case "GET":
             try {
-                const querySql = "select * from propiedad_horizonte";
-                const response = await conn.query(querySql);
-                return res.status(200).json(response.rows);
+                const propidades_horizonte : Propiedades_horizonte =  await getAllPropiedadHorizonte();
+                return res.status(200).json(propidades_horizonte);
             } catch (error:any){
                 return res.status(400).json({message: error.message});
             }

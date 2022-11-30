@@ -4,3 +4,7 @@ export interface Propiedad_horizonte {
     direccion : string;
     reglamento : string;
 };
+
+export interface Propiedades_horizonte  {
+    propiedades_horizonte : Propiedad_horizonte[]
+}

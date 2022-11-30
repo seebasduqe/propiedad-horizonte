@@ -3,3 +3,7 @@ export interface Persona {
     nombre : string;
     no_celular : string;
 }
+
+export interface Personas {
+    personas : Persona[];
+}

@@ -11,10 +11,10 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
                 const querySql = "SELECT * FROM PERSONA WHERE CEDULA = $1";
                 const values = [id];
                 const response = await conn.query(querySql, values);
-                res.status(200).json(response.rows[0]);
+                return res.status(200).json(response.rows[0]);
 
             } catch (error : any){
-                res.status(400).json({message: error.message});
+                return res.status(400).json({message: error.message});
             }
 
         case "PUT":
@@ -22,13 +22,13 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
             try {
                 const cedulaPath = id;
                 const querySql = "update persona set cedula=$1, nombre=$2, no_celular=$3 where cedula=$4 returning *";
-                const {cedula,nombre,celular} = body;
-                const personaUpdated = [cedula,nombre,celular,cedulaPath];
+                const {cedula,nombre,no_celular} = body;
+                const personaUpdated = [cedula,nombre,no_celular,cedulaPath];
                 const response = await conn.query(querySql,personaUpdated);
-                res.status(200).json(response.rows[0]);
+                return res.status(200).json(response.rows[0]);
 
             } catch (error:any){
-                res.status(400).json({message: error.message});
+                return res.status(400).json({message: error.message});
             }
 
 
@@ -37,7 +37,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
                 const cedulaPath = [id];
                 const querySql = "delete from persona where cedula=$1 returning *";
                 const response = await conn.query(querySql,cedulaPath);
-                res.status(200).json(response.rows[0]);
+                return res.status(200).json(response.rows[0]);
 
             } catch (error:any){
                 return res.status(400).json({message: error.message});

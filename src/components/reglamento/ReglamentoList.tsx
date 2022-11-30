@@ -4,8 +4,8 @@ import {useRouter} from "next/router";
 import {AiOutlineEdit} from "react-icons/ai";
 import {RiDeleteBin5Fill} from "react-icons/ri";
 
-interface Props {
-    reglamentos : Reglamento[]
+export interface Props {
+    reglamentos : Reglamento[];
 }
 
 export const ReglamentoList = ({reglamentos} : Props) => {
@@ -16,7 +16,8 @@ export const ReglamentoList = ({reglamentos} : Props) => {
     const {push} = useRouter();
 
 
-    return(<div className="p-1 bg-gray-100">
+    return(
+        <div className="p-1 bg-gray-100">
         <table className="w-full">
             <thead className="bg-gray border-b-2 border-gray-200">
             <tr>

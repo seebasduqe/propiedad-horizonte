@@ -3,3 +3,7 @@ export interface Reglamento {
   titulo : string;
   descripcion : string;
 };
+
+export interface Reglamentos {
+  reglamentos : Reglamento[];
+}

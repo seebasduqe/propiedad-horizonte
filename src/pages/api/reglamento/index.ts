@@ -11,7 +11,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             try {
                 const querySql = "select * from reglamento";
                 const response = await conn.query(querySql);
-                console.log(response.rows);
                 return res.status(200).json(response.rows);
             } catch (error: any){
                 return res.status(500).json({message: error.message});
